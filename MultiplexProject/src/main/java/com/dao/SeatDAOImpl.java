@@ -7,41 +7,41 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.model.Seat;
 import com.model.Show;
 @Component
-public class ShowDAOImpl implements ShowDAO {
-@Autowired
-SessionFactory sessionFactory;
+public class SeatDAOImpl implements SeatDAO{
+	@Autowired
+	SessionFactory sessionFactory;
 
 	@Override
-	public void addShow(Show s) {
-		// TODO Auto-generated method stub
+	public void addSeat(Seat s) {
 		Session session=sessionFactory.openSession();
 		session.getTransaction().begin();
 		session.save(s);
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
+		
 	}
 
 	@Override
-	public Show find(int id) {
+	public Seat find(int id) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.openSession();
-        Show st=session.get(Show.class, id);
+        Seat st=session.get(Seat.class, id);
 		return st;
 	}
 
 	@Override
-	public List<Show> findAll() {
+	public List<Seat> findAll() {
 		// TODO Auto-generated method stub
-		Session session=sessionFactory.openSession();
-		List<Show> showlist=session.createQuery("select i from Show i").list();
-		return showlist;
+	Session session=sessionFactory.openSession();
+	List<Seat> seatlist=session.createQuery("select i from Seat i").list();
+	return seatlist;
 	}
-
 	@Override
-	public boolean updateShow(Show s) {
+	public boolean updateSeat(Seat s) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.openSession();
 		session.getTransaction().begin();
@@ -53,12 +53,12 @@ SessionFactory sessionFactory;
 	}
 
 	@Override
-	public boolean deleteShow(int id) {
+	public boolean deleteSeat(int id) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.openSession();
-		Show show=session.find(Show.class, id);
+		Seat seat=session.find(Seat.class, id);
 		session.getTransaction().begin();
-		session.delete(show);
+		session.delete(seat);
 		session.flush();
 		session.getTransaction().commit();
 		session.close();

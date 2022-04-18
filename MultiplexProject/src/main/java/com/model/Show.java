@@ -2,15 +2,32 @@ package com.model;
 
 import java.sql.Date;
 
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class Show {
 	@Id
+@GeneratedValue
+private int showID;
+
+public int getShowID() {
+		return showID;
+	}
+
+	public void setShowID(int showID) {
+		this.showID = showID;
+	}
+
 private int hallID;
 private int movieID;
 private int slotNO;
+@JsonFormat(pattern="dd-MM-yyyy")
 private Date fromDate;
+@JsonFormat(pattern="dd-MM-yyyy")
 private Date toDate;
 
 public Show() {}

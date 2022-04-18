@@ -12,5 +12,5 @@ public void addShow(Show s);
 public Show find(int id);
 public List<Show> findAll();
 public boolean updateShow(Show s);
-public boolean deleteShow(Show s);
+public boolean deleteShow(int id);
 }
